@@ -1,0 +1,76 @@
+<!doctype html>
+<style>
+:root{
+--bg:#fff8f6;
+--card:#ffffff;
+--accent:#d9777f;
+--muted:#775757;
+--font:'Georgia',serif;
+}
+html,body{
+height:100%;margin:0;font-family:var(--font);background:var(--bg);color:#2d2d2d;
+}
+.wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
+.card{background:linear-gradient(180deg,#fff 0%,#fff5f5 100%);width:720px;max-width:94%;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,0.1);padding:40px;text-align:center;position:relative}
+h1{font-size:28px;color:var(--accent);margin-bottom:10px;letter-spacing:0.5px}
+p.lead{font-size:18px;margin-top:0;margin-bottom:30px;color:var(--muted)}
+.names{font-size:22px;margin-bottom:30px;color:#4b2e2e}
+.heart{font-size:40px;color:var(--accent);margin-bottom:20px}
+.details{background:#fff;display:inline-block;padding:20px 30px;border-radius:16px;border:1px solid #f1d4d4;box-shadow:inset 0 0 10px rgba(217,119,127,0.1)}
+.details p{margin:8px 0;font-size:17px}
+.note{margin-top:28px;color:#5a4040;font-size:16px;font-style:italic}
+.confirm{margin-top:16px;font-size:15px;color:#8b5a5a;font-weight:bold}
+.footer{margin-top:30px;border-top:1px dashed #f1d4d4;padding-top:12px;color:var(--muted);font-size:13px}
+.btns{display:flex;gap:10px;justify-content:center;margin-top:28px}
+.btn{padding:10px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:600;font-family:var(--font)}
+.btn.print{background:var(--accent);color:#fff}
+.btn.download{background:#fff;border:1px solid #e0baba;color:#b06d75}
+@media print{body{background:#fff}.wrap{padding:0}.card{box-shadow:none;border-radius:0;width:100%;padding:20mm}.btns{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<article class="card" role="article" aria-label="Invitación romántica a merienda">
+<div class="heart">❤</div>
+<h1>Una tarde solo para nosotros</h1>
+<p class="lead">Thiago Barrionuevo te invita a disfrutar una merienda juntos, <strong>Luz Ledesma</strong>.</p>
+<div class="names">Una tarde con lo que más me gusta: vos y algo rico.</div>
+
+
+<div class="details">
+<p><strong>📅 Fecha:</strong> Domingo, 2 de noviembre de 2025</p>
+<p><strong>🕓 Hora:</strong> 16:30 hs</p>
+<p><strong>📍 Lugar:</strong> Palermo, Buenos Aires</p>
+</div>
+
+
+<p class="note">Una merienda pensada para vos, para mirarnos sin apuro y dejar que la tarde nos acompañe. 💕</p>
+<p class="confirm">Confirmar asistencia lo antes posible 💌</p>
+
+
+<div class="btns">
+<button class="btn download" onclick="downloadHTML()">Descargar HTML</button>
+<button class="btn print" onclick="window.print()">Imprimir / Guardar como PDF</button>
+</div>
+
+
+<footer class="footer">Traé ganas de morfar y la panza vacía 😋</footer>
+</article>
+</div>
+
+
+<script>
+function downloadHTML(){
+const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'invitacion_romantica_thiago_a_luz.html';
+document.body.appendChild(a);
+a.click();
+a.remove();
+URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
